@@ -9,6 +9,7 @@
 // @run-at       document-start
 // ==/UserScript==
 
+const firstSectionExpandedButtonsSelector = "div#items.style-scope.ytd-guide-section-renderer";
 const sideButtonsSelector = "ytd-mini-guide-entry-renderer.style-scope.ytd-mini-guide-renderer";
 const shortieSelector = "ytd-rich-shelf-renderer.style-scope.ytd-rich-section-renderer";
 
@@ -25,6 +26,9 @@ const observer = new MutationObserver((mutations) => {
 async function doMainPageAdsChecker() {
   const sideButtons = document.querySelectorAll(sideButtonsSelector);
   if (sideButtons && sideButtons.length == 5) sideButtons[1].remove();
+
+  const sectionLists = document.querySelectorAll(firstSectionExpandedButtonsSelector);
+  if (sectionLists.length != 0 && sectionLists[0].childNodes.length == 3) sectionLists[0].childNodes[1].remove();
 
   document.querySelectorAll(shortieSelector).forEach((i) => i.remove());
 }
