@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         short2Ground
+// @name         y2ktube
 // @namespace    http://github.com/greysoh/
 // @version      0.1.0
-// @description  Neuters YouTube shorts.
+// @description  Bring YouTube back to the 2020 days.
 // @author       @greysoh
 // @match        *://*.youtube.com/*
 // @grant        none
@@ -29,7 +29,7 @@ const observer = new MutationObserver((mutations) => {
 
 async function doMainPageAdsChecker() {
   let offset = !isLoggedIn ? -1 : 0;
-
+  
   const sideButtons = document.querySelectorAll(sideButtonsSelector);
   if (sideButtons && sideButtons.length == 5+offset) sideButtons[1].remove();
 
